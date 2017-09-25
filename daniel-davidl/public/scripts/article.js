@@ -139,4 +139,6 @@ var app = app || {};
     .then(console.log)
     .then(callback);
   };
+  
+  module.Article = Article;
 }(app);
