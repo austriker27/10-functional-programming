@@ -48,7 +48,8 @@ var app = app || {};
     Article.all.push(new Article(ele));
   });
   */
-  Article = rawData.map();
+  // Article = rawData.map(); our old code
+  Article.all = rows.map(ele => new Article (ele));
   };
 
   Article.fetchAll = callback => {
@@ -64,7 +65,7 @@ var app = app || {};
   // DONE: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = () => {
     return Article.all.map(article => article.body.length)
-                      .reduce((aggregator, body) => {aggregator + body.split(' ').length}, 0);
+                      .reduce((aggregator, body) => {aggregator + body.split(' ').length}, 0); // class notes: does the body split by spaces go up in the map function?
   };
 
   // DONE: Chain together a `map` and a `reduce` call to produce an array of unique author names. You will
@@ -72,7 +73,7 @@ var app = app || {};
   Article.allAuthors = () => {
     return Article.all.map(article => article.author)
                       .reduce(function(aggregator, author) {
-                        if (author in aggregator);
+                        if (author in aggregator); // class notes: check out .includes method on the array
                       });
   };
 
@@ -139,6 +140,6 @@ var app = app || {};
     .then(console.log)
     .then(callback);
   };
-  
+
   module.Article = Article;
 }(app);
