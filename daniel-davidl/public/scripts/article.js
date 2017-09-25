@@ -73,7 +73,7 @@ var app = app || {};
   Article.allAuthors = () => {
     return Article.all.map(article => article.author)
                       .reduce(function(aggregator, author) {
-                        if (author in aggregator); // class notes: check out .includes method on the array
+                        if (author in aggregator); // class notes: check out .includes method on the array to find duplicates on an if statement.. add it if its not There. need to set initial value of an empty array.
                       });
   };
 
@@ -83,6 +83,7 @@ var app = app || {};
         author:author,
         totalWords: Article.all
           .filter(x => return x.author === author)
+          // .map(authorObj => authorObj.body) from the class code review. need map! 
           .reduce((aggregator, article) => aggregator + article.body.split(' ').length, 0);
       // DONE: Transform each author string into an object with properties for
       // the author's name, as well as the total number of words across all articles
